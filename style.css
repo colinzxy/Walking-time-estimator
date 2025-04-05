@@ -11,7 +11,7 @@ body {
     padding: 2em;
     border-radius: 8px;
     box-shadow: 0 0 10px #ccc;
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
 }
 
@@ -32,6 +32,21 @@ input {
     box-sizing: border-box;
 }
 
+fieldset {
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+legend {
+    padding: 0 0.5em;
+    font-weight: bold;
+}
+
+.mode-select label {
+    margin-right: 1em;
+}
+
 .buttons {
     margin-top: 1.5em;
     display: flex;
@@ -50,11 +65,9 @@ button {
     text-align: center;
 }
 
-.mode-select {
+footer {
     text-align: center;
-    margin-bottom: 1em;
-}
-
-.mode-select label {
-    margin: 0 1em;
+    margin-top: 2em;
+    font-size: 0.85em;
+    color: #777;
 }
