@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Walking Time Estimator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Walking Time Estimator</h1>
+        <form id="walkForm">
+            <label>Total Distance (km):</label>
+            <input type="number" step="0.1" id="distance" required>
+
+            <label>Total Ascent (m):</label>
+            <input type="number" step="1" id="ascent" required>
+
+            <label>Total Descent (m):</label>
+            <input type="number" step="1" id="descent" required>
+
+            <label>Average Pace (min/km) [Optional]:</label>
+            <input type="number" step="0.1" id="pace" placeholder="12">
+
+            <div class="buttons">
+                <button type="button" onclick="calculateTime()">Calculate</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
