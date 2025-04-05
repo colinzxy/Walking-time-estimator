@@ -1,4 +1,4 @@
-let breakdown = {};
+let breakdown = null;
 
 function calculateTime() {
     const distance = parseFloat(document.getElementById('distance').value);
@@ -9,6 +9,7 @@ function calculateTime() {
 
     if (isNaN(distance) || isNaN(ascent) || isNaN(descent)) {
         document.getElementById('result').textContent = "Please fill in all required fields.";
+        breakdown = null;
         return;
     }
 
@@ -34,7 +35,7 @@ function calculateTime() {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = Math.round(totalMinutes % 60);
 
-    // Save breakdown for later
+    // Save breakdown
     breakdown = {
         pace,
         flatMinutes: flatMinutes.toFixed(1),
@@ -45,27 +46,28 @@ function calculateTime() {
     };
 
     document.getElementById('result').textContent = `Estimated time: ${hours}h ${minutes}m`;
-
-    // Show 'Show Details' button
-    document.getElementById('detailsBtn').style.display = 'block';
-    document.getElementById('details').style.display = 'none';
+    document.getElementById('details').innerHTML = ""; // clear any old details
 }
 
 function showDetails() {
+    if (!breakdown) {
+        document.getElementById('details').textContent = "Please calculate first.";
+        return;
+    }
+
     const d = breakdown;
     document.getElementById('details').innerHTML = `
         <p>Flat time: ${d.flatMinutes} minutes (at ${d.pace} min/km)</p>
-        <p>Ascent time: ${d.ascentMinutes} minutes (Naismith)</p>
+        <p>Ascent time: ${d.ascentMinutes} minutes (Naismith's Rule)</p>
         <p>Descent time: ${d.descentMinutes} minutes (Langmuir correction)</p>
         <p>Break time: ${d.breakTime} minutes</p>
         <p><strong>Total: ${d.totalMinutes} minutes</strong></p>
     `;
-    document.getElementById('details').style.display = 'block';
 }
 
 function resetAll() {
     document.getElementById('result').textContent = "";
-    document.getElementById('detailsBtn').style.display = 'none';
-    document.getElementById('details').style.display = 'none';
+    document.getElementById('details').textContent = "";
     document.getElementById('details').innerHTML = "";
+    breakdown = null;
 }
