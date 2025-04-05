@@ -8,15 +8,28 @@
 <body>
     <div class="container">
         <h1>Walking Time Estimator</h1>
+
+        <div class="mode-select">
+            <label><input type="radio" name="mode" value="manual" checked onchange="toggleMode()"> Manual Entry</label>
+            <label><input type="radio" name="mode" value="gpx" onchange="toggleMode()"> Import GPX File</label>
+        </div>
+
         <form id="walkForm">
-            <label>Total Distance (km):</label>
-            <input type="number" step="0.1" id="distance" required>
+            <div id="manualInput">
+                <label>Total Distance (km):</label>
+                <input type="number" step="0.1" id="distance" required>
 
-            <label>Total Ascent (m):</label>
-            <input type="number" step="1" id="ascent" required>
+                <label>Total Ascent (m):</label>
+                <input type="number" step="1" id="ascent" required>
 
-            <label>Total Descent (m):</label>
-            <input type="number" step="1" id="descent" required>
+                <label>Total Descent (m):</label>
+                <input type="number" step="1" id="descent" required>
+            </div>
+
+            <div id="gpxInput" style="display: none;">
+                <label>Upload GPX File:</label>
+                <input type="file" id="gpxFile" accept=".gpx">
+            </div>
 
             <label>Average Pace (min/km) [Optional]:</label>
             <input type="number" step="0.1" id="pace" placeholder="12">
