@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Walking Time Estimator</title>
+    <title>Colin’s Walking Time Estimator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Walking Time Estimator</h1>
+        <h1>Colin’s Walking Time Estimator</h1>
 
         <div class="mode-select">
-            <label><input type="radio" name="mode" value="manual" checked onchange="toggleMode()"> Manual Entry</label>
-            <label><input type="radio" name="mode" value="gpx" onchange="toggleMode()"> Import GPX File</label>
+            <fieldset>
+                <legend>— selection input method —</legend>
+                <label><input type="radio" name="mode" value="manual" checked onchange="toggleMode()"> Manual Input</label>
+                <label><input type="radio" name="mode" value="gpx" onchange="toggleMode()"> Upload GPX File</label>
+            </fieldset>
         </div>
 
         <form id="walkForm">
@@ -46,6 +49,10 @@
 
         <div id="result"></div>
         <div id="details"></div>
+
+        <footer>
+            <p>&copy; Colin Zhang</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
